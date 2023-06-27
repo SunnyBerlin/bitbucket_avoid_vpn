@@ -20,17 +20,18 @@ source ci_utils.sh
 make_available -host somehost.private.com -ports 80,443
 ```
 
-### Example in bitbucket
+
+### Example for bitbucket pipeline
 Put ci_utils.sh in your repo and later use it in your steps. That's it. :))
 ```
-    - step: &end_to_end_tests
-        name: Run End to End Tests
-        image: cypress/included:9.7.0
-        script:
-          - source ci_utils
-          - make_available -host our.dev.env.in.aws.am -ports 80,443
-          - some-work-here-that-need-access-to-dev-env
-          - some-other-work-here-that-need-access-to-dev-env
-          - ....
+- step: &end_to_end_tests
+    name: Run End to End Tests
+    image: cypress/included:9.7.0
+    script:
+      - source ci_utils
+      - make_available -host our.dev.env.in.aws.am -ports 80,443
+      - some-work-here-that-need-access-to-dev-env
+      - some-other-work-here-that-need-access-to-dev-env
+      - ....
 ````
 
